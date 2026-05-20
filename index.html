@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tests UCLM · Seleccionar Asignatura</title>
+<style>
+:root{
+  --bg:#020817;--sur:#0F172A;--sur2:#1E293B;--sur3:#0A0F1A;
+  --bor:#1E293B;--bor2:#334155;--txt:#F1F5F9;--mu:#64748B;--mu2:#94A3B8;
+  --bl:#2563EB;--bl2:#1D4ED8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;line-height:1.5}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--sur)}::-webkit-scrollbar-thumb{background:var(--bor2);border-radius:3px}
+.wrap{max-width:680px;margin:0 auto;padding:40px 18px 80px}
+.brand{text-align:center;padding:48px 0 36px}
+.brand-pill{display:inline-flex;align-items:center;gap:9px;background:var(--sur);border:1px solid var(--bor2);border-radius:50px;padding:9px 20px;margin-bottom:18px}
+.brand-pill span{font-size:11px;letter-spacing:3px;color:var(--mu);text-transform:uppercase}
+.brand h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--txt);line-height:1.2;font-family:Georgia,serif}
+.brand p{color:var(--mu);margin-top:8px;font-size:14px}
+.section-label{font-size:11px;letter-spacing:3px;color:var(--mu);text-transform:uppercase;margin-bottom:16px;font-family:Georgia,serif}
+.subjects-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+@media(max-width:500px){.subjects-grid{grid-template-columns:1fr}}
+.subject-card{display:flex;align-items:center;gap:16px;background:var(--sur);border:1px solid var(--bor2);border-radius:18px;padding:20px 18px;text-decoration:none;color:var(--txt);transition:border-color .2s,transform .15s,box-shadow .2s;cursor:pointer}
+.subject-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px #00000040}
+.subject-card.available{border-color:#2563EB44}
+.subject-card.available:hover{border-color:#2563EB;box-shadow:0 8px 24px #2563eb22}
+.subject-card.contable:hover{border-color:#16A34A;box-shadow:0 8px 24px #16a34a22}
+.subject-card.mercados:hover{border-color:#F59E0B;box-shadow:0 8px 24px #f59e0b22}
+.subject-card.civil4:hover{border-color:#8B5CF6;box-shadow:0 8px 24px #8b5cf622}
+.sc-icon{font-size:32px;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--sur2);border-radius:12px}
+.sc-body{flex:1;min-width:0}
+.sc-name{font-size:14px;font-weight:700;line-height:1.3;margin-bottom:4px}
+.sc-meta{font-size:12px;color:var(--mu)}
+.sc-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-top:4px}
+.sc-badge.ready{background:#1e3a5f;color:#60a5fa}
+.sc-badge.soon{background:#1e2a1e;color:#4ade80;opacity:.8}
+.sc-arrow{color:var(--mu);font-size:18px;flex-shrink:0;transition:transform .2s,color .2s}
+.subject-card:hover .sc-arrow{transform:translateX(4px);color:var(--txt)}
+.footer{text-align:center;color:var(--mu);font-size:12px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-pill"><span>🎓</span><span>UCLM · ADE + Derecho · 5º</span></div>
+    <h1>Tests de Preparación</h1>
+    <p>Selecciona una asignatura para empezar a practicar</p>
+  </div>
+
+  <p class="section-label">Asignaturas</p>
+
+  <div class="subjects-grid">
+    <a href="econometria.html" class="subject-card available">
+      <div class="sc-icon">📐</div>
+      <div class="sc-body">
+        <div class="sc-name">Métodos y Modelos Econométricos</div>
+        <div class="sc-meta">88 preguntas · 13 temas</div>
+        <span class="sc-badge ready">Disponible</span>
+      </div>
+      <div class="sc-arrow">→</div>
+    </a>
+
+    <a href="contable.html" class="subject-card contable">
+      <div class="sc-icon">📊</div>
+      <div class="sc-body">
+        <div class="sc-name">Análisis Contable</div>
+        <div class="sc-meta">Sin preguntas aún</div>
+        <span class="sc-badge soon">Próximamente</span>
+      </div>
+      <div class="sc-arrow">→</div>
+    </a>
+
+    <a href="mercados.html" class="subject-card mercados">
+      <div class="sc-icon">📈</div>
+      <div class="sc-body">
+        <div class="sc-name">Investigación de Mercados</div>
+        <div class="sc-meta">Sin preguntas aún</div>
+        <span class="sc-badge soon">Próximamente</span>
+      </div>
+      <div class="sc-arrow">→</div>
+    </a>
+
+    <a href="civil4.html" class="subject-card civil4">
+      <div class="sc-icon">⚖️</div>
+      <div class="sc-body">
+        <div class="sc-name">Derecho Civil IV</div>
+        <div class="sc-meta">Sin preguntas aún</div>
+        <span class="sc-badge soon">Próximamente</span>
+      </div>
+      <div class="sc-arrow">→</div>
+    </a>
+  </div>
+
+  <p class="footer">Curso académico 2025-2026 · 2º Cuatrimestre</p>
+</div>
+</body>
+</html>
