@@ -507,9 +507,9 @@ function renderQ(){
   document.getElementById('q-exp-txt').textContent='';
   const nb=document.getElementById('q-next');
   nb.style.display='none';nb.textContent=(qi+1>=tot)?'Ver Resultados →':'Siguiente →';
-  const opts=shuf(q.o.map((o,i)=>({txt:o,orig:i})));
+  const opts=q.o.map((o,i)=>({txt:o,orig:i}));
   q._sh=opts;
-  const letters=['A','B','C','D'];
+  const letters=['A','B','C','D','E','F'];
   document.getElementById('q-opts').innerHTML=opts.map((o,i)=>
     `<button class="ob" id="op${i}" onclick="selOpt(${i})"><span class="ol-letter">${letters[i]}</span><span>${o.txt}</span></button>`
   ).join('');
