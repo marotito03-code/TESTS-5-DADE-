@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investigación de Mercados — Guía Completa</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+  :root {
+    --bg: #F7F7F8;
+    --bg2: #FFFFFF;
+    --bg3: #F0F0F3;
+    --border: #E2E1E8;
+    --text: #1A1A2E;
+    --text2: #4A4A5E;
+    --text3: #8A8A9E;
+    --purple: #534AB7;
+    --purple-l: #3C3489;
+    --purple-bg: #EEEDFE;
+    --teal: #0F6E56;
+    --teal-l: #085041;
+    --teal-bg: #E1F5EE;
+    --amber: #BA7517;
+    --amber-l: #633806;
+    --amber-bg: #FAEEDA;
+    --red: #A32D2D;
+    --red-l: #791F1F;
+    --red-bg: #FCEBEB;
+    --blue: #185FA5;
+    --blue-l: #0C447C;
+    --blue-bg: #E6F1FB;
+    --coral: #712B13;
+    --coral-bg: #FAECE7;
+    --r: 10px;
+    --r-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F7F7F8;
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: linear-gradient(135deg, #EEEDFE 0%, #F7F7F8 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(83,74,183,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .site-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    position: relative;
+  }
+  .site-header h1 span { color: #534AB7; }
+  .site-header p {
+    font-size: 13px;
+    color: var(--text2);
+    margin-top: 8px;
+    position: relative;
+  }
+
+  /* NAV */
+  .toc {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .toc a {
+    font-size: 11px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text2);
+    background: #EEEDFE;
+    border: 1px solid #E2E1E8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { color: var(--text); border-color: #534AB7; }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* TOPIC HEADER */
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 48px 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .topic-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .topic-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .topic-header p { font-size: 12px; color: #8A8A9E; margin-top: 2px; }
+
+  /* CARD */
+  .card {
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    background: #FFFFFF;
+    border: 1px solid #E2E1E8;
+    border-radius: var(--r);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .grid { display: grid; gap: 10px; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+  /* INNER BOX */
+  .box {
+    background: #EEEDFE;
+    border-radius: var(--r-sm);
+    padding: 10px 12px;
+  }
+  .box-title {
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+
+  /* TEXT */
+  .t-sm { font-size: 12px; color: var(--text2); }
+  .t-xs { font-size: 11px; color: #8A8A9E; font-style: italic; }
+  .t-b { font-weight: 500; color: var(--text); }
+  .row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 5px; }
+  .dot { flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; margin-top: 7px; }
+
+  /* PILL */
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* CALLOUTS */
+  .warn { background: var(--amber-bg); border: 1px solid rgba(245,166,35,.25); border-radius: var(--r-sm); padding: 8px 12px; font-size: 12px; color: #412402; margin-top: 8px; }
+  .tip  { background: var(--teal-bg);  border: 1px solid rgba(45,212,160,.2);  border-radius: var(--r-sm); padding: 8px 12px; font-size: 12px; color: #04342C; margin-top: 8px; }
+  .alert{ background: var(--red-bg);   border: 1px solid rgba(240,107,107,.2); border-radius: var(--r-sm); padding: 8px 12px; font-size: 12px; color: #501313; margin-top: 8px; }
+  .info { background: var(--blue-bg);  border: 1px solid rgba(91,163,232,.2);  border-radius: var(--r-sm); padding: 8px 12px; font-size: 12px; color: #042C53; margin-top: 8px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  th { background: #EEEDFE; border: 1px solid #E2E1E8; padding: 6px 8px; font-size: 10px; font-weight: 600; color: #8A8A9E; text-align: center; text-transform: uppercase; letter-spacing: .06em; }
+  td { border: 1px solid #E2E1E8; padding: 6px 8px; color: var(--text2); text-align: center; }
+  tr:nth-child(even) td { background: rgba(0,0,0,.02); }
+  .td-l { text-align: left; font-weight: 500; color: var(--text); }
+  .hi { color: #085041; font-weight: 500; }
+  .lo { color: #A32D2D; font-weight: 500; }
+  .mid { color: var(--text2); }
+
+  /* STEP */
+  .step { display: flex; gap: 12px; align-items: flex-start; background: #EEEDFE; border-radius: var(--r-sm); padding: 10px 12px; margin-bottom: 6px; }
+  .step-num { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: 'Syne', sans-serif; }
+
+  /* LEFT BORDER CARD */
+  .lcard { border-left: 3px solid var(--border); padding-left: 14px; }
+
+  /* DIVIDER */
+  .div { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* MONO */
+  .mono { font-family: 'Courier New', monospace; font-size: 12px; background: #EEEDFE; border-radius: 4px; padding: 4px 8px; display: inline-block; color: var(--text); }
+
+  /* FACTORIAL TABLE */
+  .fact-cell { background: #EEEDFE; border: 1px solid #E2E1E8; padding: 8px; text-align: center; font-size: 12px; font-weight: 600; }
+
+  /* FOOTER */
+  footer { background: #FFFFFF; border-top: 1px solid var(--border); padding: 24px 32px; text-align: center; font-size: 11px; color: #8A8A9E; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Investigación de <span>Mercados</span></h1>
+  <p>Guía completa de estudio · Temas 1–8 · Apuntes UCLM</p>
+</header>
+
+<nav class="toc">
+  <a href="#t2">T2 · Diseños investigación</a>
+  <a href="#t2b">T2 · Transversal vs Longitudinal</a>
+  <a href="#t2c">T2 · Datos primarios y secundarios</a>
+  <a href="#t2d">T2 · Errores MA/NM</a>
+  <a href="#t2e">T2 · Observación</a>
+  <a href="#t3">T3 · Técnicas cualitativas</a>
+  <a href="#t3b">T3 · Árbol decisión</a>
+  <a href="#t4">T4 · Encuestas</a>
+  <a href="#t4b">T4 · Observación cuantitativa</a>
+  <a href="#t5">T5 · Experimentación</a>
+  <a href="#t5b">T5 · Diseños detalle</a>
+  <a href="#t6">T6 · Muestreo</a>
+  <a href="#t6b">T6 · Censo vs Muestra</a>
+  <a href="#t6c">T6 · Concluyente vs Exploratorio</a>
+  <a href="#t7">T7 · Escalas básicas y ejemplos</a>
+  <a href="#t7b">T7 · Fiabilidad y validez</a>
+  <a href="#t7c">T7 · Cuestionario</a>
+  <a href="#t8">T8 · Análisis de datos</a>
+</nav>
+
+<div class="container">
+
+<!-- ====================================================== -->
+<!-- TEMA 2: DISEÑO DE INVESTIGACIÓN COMPLETO -->
+<!-- ====================================================== -->
+<div id="t2" class="topic-header">
+  <div class="topic-badge" style="background:var(--purple-bg);color:var(--purple-l)">Tema 2</div>
+  <div>
+    <h2>Diseño de investigación y fuentes de información</h2>
+    <p>Tipos de diseño · Transversal vs Longitudinal · Datos primarios y secundarios · Errores · Observación</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Las 6 etapas del proceso de investigación de mercados</div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">1</div><div><span class="t-b">Definición del problema</span> <span class="t-sm">— Enunciado general + componentes específicos. Reflexión inicial.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">2</div><div><span class="t-b">Método para resolver el problema</span> <span class="t-sm">— Marco teórico, modelos analíticos, hipótesis, qué información se necesita.</span></div></div>
+    <div class="step" style="border:1px solid rgba(24,95,165,.3);background:var(--blue-bg)"><div class="step-num" style="background:rgba(24,95,165,.2);color:var(--blue-l)">3</div><div><span class="t-b" style="color:var(--blue-l)">Diseño de la investigación ← AQUÍ ESTÁ EL MUESTREO</span> <span class="t-sm">— Tipo de investigación, fuentes de datos, método de recogida, plan de muestreo, cuestionario, escalas.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--amber-bg);color:var(--amber-l)">4</div><div><span class="t-b">Trabajo de campo</span> <span class="t-sm">— Ejecución del plan. Aquí ocurren los errores NM. Selección, formación y supervisión de entrevistadores.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">5</div><div><span class="t-b">Preparación y análisis de datos</span> <span class="t-sm">— Codificación, tabulación, análisis estadístico.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">6</div><div><span class="t-b">Redacción y presentación del informe final</span> <span class="t-sm">— Fácil de comprender, claro y conciso. Partes: antecedentes, objetivos, marco teórico, método, resultados, conclusiones.</span></div></div>
+  </div>
+  <div class="alert"><strong>Trampa:</strong> el muestreo se diseña en la etapa 3, no en la 4. La 4 solo ejecuta lo que ya se decidió.</div>
+</div>
+
+<!-- COMPARATIVA 3 DISEÑOS -->
+<div class="card">
+  <div class="card-title">Comparación de los 3 diseños de investigación</div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:18%">Criterio</th><th style="color:var(--purple-l)">Exploratorio</th><th style="color:var(--teal-l)">Descriptivo</th><th style="color:var(--amber-l)">Causal</th></tr>
+    <tr><td class="td-l">Objetivo</td><td>Descubrir ideas y conocimientos</td><td>Describir características o funciones del mercado</td><td>Determinar relaciones causales</td></tr>
+    <tr><td class="td-l">Características</td><td>Flexible · Versátil · Parte preliminar del diseño</td><td>Hipótesis específicas previas · Diseño planificado</td><td>Manipulación de VI · Control de variables mediadoras</td></tr>
+    <tr><td class="td-l">Resultados</td><td class="lo">Tentativos</td><td class="mid">Descriptivos</td><td class="hi">Concluyentes</td></tr>
+    <tr><td class="td-l">Métodos</td><td>Datos secundarios cualitativos · Entrevistas · Grupos discusión · Proyectivas</td><td>Datos secundarios cuantitativos · Encuesta · Observación · Panel</td><td>Experimentos</td></tr>
+    <tr><td class="td-l">Muestra</td><td class="lo">Pequeña y no representativa</td><td class="hi">Grande y representativa</td><td class="mid">Controlada</td></tr>
+  </table></div>
+</div>
+
+<!-- FINES DEL DISEÑO -->
+<div class="card">
+  <div class="card-title">Fines de los diseños de investigación — la tabla que más cae</div>
+  <p class="t-sm" style="margin-bottom:10px;color:var(--text3)">Algunos fines pueden pertenecer a más de un diseño. Memoriza las excepciones.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:42%">Fin / Objetivo</th><th style="color:var(--purple-l)">EX</th><th style="color:var(--teal-l)">DESC</th><th style="color:var(--amber-l)">CAUS</th></tr>
+    <tr><td class="td-l">Formular o definir un problema con mayor precisión</td><td style="text-align:center;color:var(--purple-l);font-weight:600">✓</td><td></td><td></td></tr>
+    <tr><td class="td-l">Identificar acciones a seguir</td><td style="text-align:center;color:var(--purple-l);font-weight:600">✓</td><td></td><td></td></tr>
+    <tr><td class="td-l">Obtener conocimiento inicial</td><td style="text-align:center;color:var(--purple-l);font-weight:600">✓</td><td></td><td></td></tr>
+    <tr><td class="td-l">Establecer prioridades para posteriores investigaciones</td><td style="text-align:center;color:var(--purple-l);font-weight:600">✓</td><td></td><td></td></tr>
+    <tr><td class="td-l">Aislar variables para analizarlas en profundidad</td><td style="text-align:center;color:var(--purple-l);font-weight:600">✓</td><td></td><td></td></tr>
+    <tr><td class="td-l">Establecer hipótesis</td><td style="text-align:center;color:var(--purple-l);font-weight:600">✓</td><td></td><td></td></tr>
+    <tr><td class="td-l">Describir características de consumidores</td><td></td><td style="text-align:center;color:var(--teal-l);font-weight:600">✓</td><td></td></tr>
+    <tr><td class="td-l">Calcular porcentajes y realizar pronósticos</td><td></td><td style="text-align:center;color:var(--teal-l);font-weight:600">✓</td><td></td></tr>
+    <tr><td class="td-l">Determinar la relación entre dos variables</td><td></td><td></td><td style="text-align:center;color:var(--amber-l);font-weight:600">✓</td></tr>
+    <tr><td class="td-l">Determinar qué variable causa un efecto en otra</td><td></td><td></td><td style="text-align:center;color:var(--amber-l);font-weight:600">✓</td></tr>
+    <tr><td class="td-l" style="background:rgba(240,107,107,.07)">Determinar percepciones hacia un producto/marca</td><td style="text-align:center;color:var(--purple-l);font-weight:600;background:rgba(240,107,107,.07)">✓</td><td style="text-align:center;color:var(--teal-l);font-weight:600;background:rgba(240,107,107,.07)">✓*</td><td style="background:rgba(240,107,107,.07)"></td></tr>
+  </table></div>
+  <div class="alert"><strong>Excepción clave:</strong> "Determinar percepciones hacia un producto/marca" es exploratorio por defecto, PERO si el enunciado menciona reglas, porcentajes o datos numéricos → pasa a ser <strong>descriptivo</strong>. Esta es la trampa más frecuente de este bloque.</div>
+</div>
+
+<!-- TRANSVERSAL VS LONGITUDINAL -->
+<div id="t2b" class="card">
+  <div class="card-title">Diseño transversal vs diseño longitudinal</div>
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Diseño transversal</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Recopilar información de una muestra <strong>una sola vez</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Simple:</strong> una muestra, una vez.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Múltiple:</strong> dos o más muestras, cada una encuestada una vez (en distintos momentos).</p></div>
+      <p class="t-xs" style="margin-top:5px">Ej: encuestar a 500 clientes en enero para conocer sus hábitos de compra actuales.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Diseño longitudinal</div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Muestra <strong>fija</strong> de elementos medida <strong>repetitivamente</strong> en el tiempo (panel).</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Se observan los mismos sujetos en periodos sucesivos → detecta tendencias y desplazamientos.</p></div>
+      <p class="t-xs" style="margin-top:5px">Ej: panel de hogares que registra semanalmente sus compras durante 2 años.</p>
+    </div>
+  </div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:32%">Criterio de evaluación</th><th style="color:var(--purple-l)">Transversal</th><th style="color:var(--teal-l)">Longitudinal</th><th style="width:36%">Explicación</th></tr>
+    <tr><td class="td-l">Detectar cambio</td><td class="lo">−</td><td class="hi">+</td><td style="border:1px solid var(--border);padding:6px 8px;font-size:11px;color:var(--text2);text-align:left">El longitudinal observa tendencias a lo largo del tiempo.</td></tr>
+    <tr><td class="td-l">Muchos datos recogidos</td><td class="lo">−</td><td class="hi">+</td><td style="border:1px solid var(--border);padding:6px 8px;font-size:11px;color:var(--text2);text-align:left">El longitudinal acumula datos de los mismos individuos en múltiples momentos.</td></tr>
+    <tr><td class="td-l">Exactitud</td><td class="lo">−</td><td class="hi">+</td><td style="border:1px solid var(--border);padding:6px 8px;font-size:11px;color:var(--text2);text-align:left">El longitudinal evita el recurso a la memoria del encuestado.</td></tr>
+    <tr><td class="td-l">Muestreo representativo</td><td class="hi">+</td><td class="lo">−</td><td style="border:1px solid var(--border);padding:6px 8px;font-size:11px;color:var(--text2);text-align:left">El transversal usa muestra fresca; el longitudinal se va sesgando con el tiempo (abandono de panelistas).</td></tr>
+    <tr><td class="td-l">Desviación de respuestas</td><td class="hi">+</td><td class="lo">−</td><td style="border:1px solid var(--border);padding:6px 8px;font-size:11px;color:var(--text2);text-align:left">El transversal obtiene respuestas frescas. El longitudinal sufre el <strong>efecto panel</strong>: al ser medidos muchas veces, los participantes alteran su comportamiento y respuestas.</td></tr>
+    <tr><td class="td-l">Relación con panel de encuestados</td><td class="lo">No</td><td class="hi">Sí ← panel</td><td style="border:1px solid var(--border);padding:6px 8px;font-size:11px;color:var(--text2);text-align:left">El diseño longitudinal ES el panel: misma muestra fija, medición repetida.</td></tr>
+  </table></div>
+  <div class="warn"><strong>+ = ventaja relativa · − = desventaja relativa</strong> (notación exacta de los apuntes).</div>
+</div>
+
+<!-- DATOS PRIMARIOS Y SECUNDARIOS -->
+<div id="t2c" class="card">
+  <div class="card-title">Datos primarios vs datos secundarios</div>
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="box" style="border-left:3px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Datos secundarios</div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm">Recopilados para otros problemas distintos al actual.</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>Internos:</strong> listos para su uso / requieren procesamiento.</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>Externos:</strong> material bibliográfico publicado · bases de datos · paneles.</p></div>
+      <p class="t-sm" style="margin-top:6px;font-weight:500;color:var(--red-l)">Desventajas: utilidad limitada · pueden no ser actuales · falta de fiabilidad.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Datos primarios</div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Recopilados específicamente para el problema actual (ad hoc).</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Proceso muy complejo · coste alto · tiempo largo.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Totalmente adaptados al problema → mayor utilidad.</p></div>
+    </div>
+  </div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left">Criterio</th><th style="color:var(--teal-l)">Datos primarios</th><th style="color:var(--blue-l)">Datos secundarios</th></tr>
+    <tr><td class="td-l">Finalidad de la recopilación</td><td>Problema ad hoc</td><td>Otros problemas</td></tr>
+    <tr><td class="td-l">Proceso de recopilación</td><td class="lo">Muy complejo</td><td class="hi">Rápido y fácil</td></tr>
+    <tr><td class="td-l">Coste de recopilación</td><td class="lo">Alto</td><td class="hi">Relativamente bajo</td></tr>
+    <tr><td class="td-l">Tiempo de recopilación</td><td class="lo">Largo</td><td class="hi">Corto</td></tr>
+  </table></div>
+  <div style="margin-top:10px">
+    <p class="t-sm" style="font-weight:500;margin-bottom:6px">Criterios para evaluar datos secundarios</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px">
+      <div class="box"><div class="box-title" style="color:var(--purple-l)">Especificaciones / metodología</div><p class="t-sm">Método de recogida · nivel de respuesta · técnica de muestreo · tamaño muestra · diseño cuestionario.</p></div>
+      <div class="box"><div class="box-title" style="color:var(--red-l)">Error / exactitud</div><p class="t-sm">Examinar errores en: método, diseño, muestreo, recogida, análisis, informe. Comparar fuentes.</p></div>
+      <div class="box"><div class="box-title" style="color:var(--amber-l)">Actualidad</div><p class="t-sm">Tiempo entre recopilación y publicación. Frecuencia de actualizaciones.</p></div>
+      <div class="box"><div class="box-title" style="color:var(--teal-l)">Objetivo</div><p class="t-sm">¿Por qué se recopiló? El objetivo determina la pertinencia.</p></div>
+      <div class="box"><div class="box-title" style="color:var(--blue-l)">Naturaleza</div><p class="t-sm">Definición de variables · unidades de medida · categorías utilizadas.</p></div>
+      <div class="box"><div class="box-title" style="color:var(--text2)">Fiabilidad</div><p class="t-sm">Experiencia, credibilidad y reputación de la fuente. Siempre fuente original.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Las 6 etapas del proceso de investigación de mercados</div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">1</div><div><span class="t-b">Definición del problema</span> <span class="t-sm">— Enunciado general + componentes específicos. Reflexión inicial.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">2</div><div><span class="t-b">Método para resolver el problema</span> <span class="t-sm">— Marco teórico, modelos analíticos, hipótesis, qué información se necesita.</span></div></div>
+    <div class="step" style="border:1px solid rgba(91,163,232,.3);background:var(--blue-bg)"><div class="step-num" style="background:rgba(91,163,232,.2);color:var(--blue-l)">3</div><div><span class="t-b" style="color:var(--blue-l)">Diseño de la investigación ← AQUÍ ESTÁ EL MUESTREO</span> <span class="t-sm">— Tipo de investigación, fuentes de datos, método de recogida, plan de muestreo, cuestionario, escalas.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--amber-bg);color:var(--amber-l)">4</div><div><span class="t-b">Trabajo de campo</span> <span class="t-sm">— Ejecución del plan. Aquí ocurren los errores NM. Selección, formación y supervisión de entrevistadores.</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">5</div><div><span class="t-b">Preparación y análisis de datos</span> <span class="t-sm">— Codificación, tabulación, análisis estadístico (ANOVA, regresión…).</span></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">6</div><div><span class="t-b">Redacción y presentación del informe final</span> <span class="t-sm">— Fácil de comprender, claro y conciso.</span></div></div>
+  </div>
+  <div class="alert"><strong>Trampa:</strong> el muestreo se diseña en la etapa 3, no en la 4. La 4 solo ejecuta lo que ya se decidió.</div>
+</div>
+
+<div id="t2d" class="card">
+  <div class="card-title">Fuentes de error: MA vs NM</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Error de Muestreo Aleatorio (MA)</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Surge del propio método de muestreo por trabajar con muestra en lugar de censo.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Solo existe un tipo:</strong> selección de individuos.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Existe aunque el procedimiento sea perfecto. Inevitable.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Se reduce aumentando el tamaño muestral.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--red)">
+      <div class="box-title" style="color:var(--red-l)">Errores No Muestrales (NM) — todo lo demás</div>
+      <p class="t-sm" style="margin-bottom:8px">Del <strong>investigador:</strong> reemplazo de info · medición · definición de población · marco de muestreo · análisis de datos.</p>
+      <p class="t-sm" style="margin-bottom:8px">Del <strong>entrevistador:</strong> selección del encuestado · error al preguntar · error de registro · fraude.</p>
+      <p class="t-sm">Del <strong>encuestado:</strong> falta de habilidad · renuncia · error de respuesta.</p>
+    </div>
+  </div>
+  <div class="alert"><strong>Trampa clásica:</strong> "error de selección del encuestado" suena a MA pero es NM — lo comete el entrevistador eligiendo mal a quién encuesta, no el método estadístico. La regla: si solo hay un tipo es MA. Todo lo demás es NM.</div>
+</div>
+
+<!-- ====================================================== -->
+<!-- TEMA 3 -->
+<!-- ====================================================== -->
+
+<!-- ====================================================== -->
+<!-- OBSERVACIÓN (Tema 2/3) -->
+<!-- ====================================================== -->
+<div id="t2e" class="topic-header">
+  <div class="topic-badge" style="background:var(--amber-bg);color:var(--amber-l)">Tema 2-3</div>
+  <div>
+    <h2>Tipos de observación</h2>
+    <p>Criterios de clasificación · Métodos · Tabla comparativa</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Criterios de clasificación</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Grado de estructuración</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Estructurada:</strong> el problema está definido y se conocen los patrones a observar. Ej: circulación en tienda, comentarios en RRSS.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>No estructurada:</strong> objeto ambiguo, mayor flexibilidad. Ej: comportamiento del personal de ventas.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Grado de ocultación</div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Encubierta:</strong> los observados NO saben → comportamiento natural. Ej: cámara oculta, cliente misterioso.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Abierta:</strong> los sujetos SÍ saben → puede haber sesgo. Ej: psicogalvanómetro.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Ambiente</div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Entorno natural:</strong> situación real sin manipulación. Ej: personas en la cola del banco.</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Entorno artificial:</strong> el investigador altera deliberadamente el ambiente. Ej: laboratorio con carteles.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Otros criterios</div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>Momento:</strong> directa (en el hecho) / indirecta (a partir de registros pasados).</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>Tipo de datos:</strong> cuantitativa o cualitativa.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">5 Métodos de observación</div>
+  <div class="grid g3">
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Personal</div>
+      <p class="t-sm">Un investigador observa y registra en memoria, impresos o plannings.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Mecánica / electrónica</div>
+      <p class="t-sm">Dispositivos sin intervención humana: contadores de tráfico · escáneres · audímetros · cámaras oculares · psicogalvanómetros · cookies · Google Trends.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Inventario</div>
+      <p class="t-sm"><strong>Pantry audit:</strong> productos en el hogar del consumidor.<br><strong>Store audit:</strong> productos en tienda y almacén del detallista (Nielsen).</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Análisis de contenido</div>
+      <p class="t-sm">Descripción objetiva, sistemática y cuantitativa del contenido manifiesto de un mensaje. Ej: publicidad, preguntas abiertas, redes sociales.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--red)">
+      <div class="box-title" style="color:var(--red-l)">Análisis de rastros</div>
+      <p class="t-sm">Evidencias físicas o virtuales de conductas pasadas. Ej: erosión del suelo de tienda · cookies · Google Trends.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Tabla comparativa entre métodos</div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:22%">Criterio</th><th style="color:var(--purple-l)">Personal</th><th style="color:var(--teal-l)">Mecánica</th><th style="color:var(--amber-l)">Inventario</th><th style="color:var(--blue-l)">Contenido</th><th style="color:var(--red-l)">Rastros</th></tr>
+    <tr><td class="td-l">Grado de estructura</td><td>Bajo</td><td>Bajo-alto</td><td>Alto</td><td>Alto</td><td>Medio</td></tr>
+    <tr><td class="td-l">Grado de ocultación</td><td>Medio</td><td>Bajo-alto</td><td>Bajo</td><td>Alto</td><td>Alto</td></tr>
+    <tr><td class="td-l">Entorno natural</td><td class="hi">Alta</td><td>Baja-alta</td><td class="hi">Alta</td><td>Media</td><td class="lo">Baja</td></tr>
+    <tr><td class="td-l">Sesgo del observador</td><td class="lo">Alto</td><td class="hi">Bajo</td><td class="hi">Bajo</td><td>Medio</td><td>Medio</td></tr>
+    <tr><td class="td-l">Sesgo de análisis</td><td class="lo">Alto</td><td>Bajo-medio</td><td class="hi">Bajo</td><td class="hi">Bajo</td><td>Medio</td></tr>
+    <tr><td class="td-l">Nota</td><td style="color:var(--purple-l)">Más flexible</td><td class="lo">Puede invadir privacidad</td><td class="lo">Costoso</td><td style="color:var(--text3)">Solo mensajes</td><td style="color:var(--text3)">Último recurso</td></tr>
+  </table></div>
+  <div class="alert"><strong>Personal = el peor en ambos sesgos.</strong> Mecánica e inventario = los más fiables (sesgo bajo). El personal es el más flexible pero el menos objetivo.</div>
+</div>
+
+<div id="t3" class="topic-header">
+  <div class="topic-badge" style="background:var(--purple-bg);color:var(--purple-l)">Tema 3</div>
+  <div>
+    <h2>Investigación cualitativa</h2>
+    <p>Técnicas directas e indirectas · Grupos de discusión · Entrevistas · Proyectivas</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Cualitativa vs Cuantitativa</div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left">Criterio</th><th>Cualitativa</th><th>Cuantitativa</th></tr>
+    <tr><td class="td-l">Objetivo</td><td>Aproximarse al problema</td><td>Cuantificar y generalizar</td></tr>
+    <tr><td class="td-l">Muestra</td><td class="lo">Pocos casos, no representativa</td><td class="hi">Muchos casos, representativa</td></tr>
+    <tr><td class="td-l">Recogida de datos</td><td>No estructurada</td><td>Estructurada</td></tr>
+    <tr><td class="td-l">Análisis</td><td>No estadístico</td><td>Estadístico</td></tr>
+    <tr><td class="td-l">Resultado</td><td>Conocimiento inicial</td><td>Recomendación concreta</td></tr>
+  </table></div>
+  <div class="tip"><strong>El éxito de la cualitativa depende de:</strong> creatividad + sentido común + intuición del investigador.</div>
+</div>
+
+<div id="t3b" class="card">
+  <div class="card-title">Árbol de decisión: ¿qué tipo de investigación usar?</div>
+  <p class="t-sm" style="margin-bottom:12px">Aplica estas 3 preguntas en orden al leer cualquier caso práctico.</p>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div class="step" style="border-left:4px solid var(--purple)">
+      <div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">1</div>
+      <div><p class="t-sm"><strong style="color:var(--purple-l)">¿Busca entender motivaciones, razones u opiniones?</strong><br>Palabras clave: "razones", "por qué", "opiniones", "percepciones", "se reúne con", "grupo de", "entrevista a" → <strong>Exploratoria / Cualitativa (T3)</strong></p></div>
+    </div>
+    <div class="step" style="border-left:4px solid var(--teal)">
+      <div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">2</div>
+      <div><p class="t-sm"><strong style="color:var(--teal-l)">¿Busca describir o cuantificar?</strong><br>Palabras clave: "encuesta a", "cuántos", "qué porcentaje", "frecuencia de compra", "perfil del consumidor", "observación de" → <strong>Descriptiva / Cuantitativa (T4)</strong></p></div>
+    </div>
+    <div class="step" style="border-left:4px solid var(--amber)">
+      <div class="step-num" style="background:var(--amber-bg);color:var(--amber-l)">3</div>
+      <div><p class="t-sm"><strong style="color:var(--amber-l)">¿Manipula algo para ver su efecto sobre otra variable?</strong><br>Palabras clave: "efecto de", "si cambiamos X qué pasa con Y", "comparar dos versiones", "grupo control", "tratamiento" → <strong>Causal / Experimental (T5)</strong></p></div>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:12px">
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Caso cualitativo</div>
+      <p class="t-sm">Reunión con gerentes de supermercado para entender <strong>razones</strong> sobre el surtido de aceite → grupo de discusión → cualitativa.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Caso descriptivo</div>
+      <p class="t-sm">Encuestar a 500 clientes para saber <strong>cuántos</strong> compran aceite de oliva vs girasol semanalmente → encuesta → descriptiva.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Caso causal</div>
+      <p class="t-sm">Poner aceite en distintas posiciones de estantería para ver <strong>si la posición afecta las ventas</strong> → experimento → causal.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card">
+  <div class="card-title">Clasificación: Directas (no ocultas) vs Indirectas (ocultas)</div>
+  <div class="grid g2">
+    <div>
+      <div class="pill" style="background:var(--purple-bg);color:var(--purple-l);margin-bottom:10px">DIRECTAS · El sujeto SABE que es investigado</div>
+
+      <div class="box" style="margin-bottom:8px;border-left:2px solid var(--purple)">
+        <div class="box-title" style="color:var(--purple-l)">Grupos de discusión <span class="pill" style="background:rgba(124,111,224,.15);color:var(--purple-l)">Grupal</span></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">~10 personas + 1 moderador · ~2 horas · Grabación obligatoria.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Grupos <strong>homogéneos</strong> → eliminar barreras de comunicación.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">✅ Sinergia · efecto bola de nieve · espontaneidad · rapidez.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">❌ Sin representatividad · depende del moderador · no permite estadísticos.</p></div>
+      </div>
+
+      <div class="box" style="margin-bottom:8px;border-left:2px solid var(--purple)">
+        <div class="box-title" style="color:var(--purple-l)">Entrevistas en profundidad <span class="pill" style="background:rgba(124,111,224,.15);color:var(--purple-l)">Individual</span></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">~1h · No estructurada · Muestra pequeña · Evita juicios de valor.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Tipos: estructurada / no estructurada (libre) / semiestructurada.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Técnicas internas: <strong>escalonamiento</strong> (atributos→consecuencias→valores) · <strong>preguntas ocultas</strong> · <strong>análisis simbólico</strong> (estudiar el opuesto).</p></div>
+      </div>
+
+      <div class="box" style="border-left:2px solid var(--purple)">
+        <div class="box-title" style="color:var(--purple-l)">Brainstorming <span class="pill" style="background:rgba(124,111,224,.15);color:var(--purple-l)">Grupal · Expertos</span></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Expresar ideas con libertad → depurar → evaluar y seleccionar la mejor.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>No se emiten juicios críticos</strong> en la fase de depuración.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="pill" style="background:var(--red-bg);color:var(--red-l);margin-bottom:10px">INDIRECTAS · El sujeto NO sabe que es investigado</div>
+
+      <div class="box" style="margin-bottom:8px;border-left:2px solid var(--red)">
+        <div class="box-title" style="color:var(--red-l)">Pseudocompra / Mystery shopper <span class="pill" style="background:rgba(240,107,107,.15);color:var(--red-l)">Individual</span></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">Entrevistador actúa como cliente potencial. No se identifica.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">Objetivos: actitud del vendedor · imagen de marca · argumentos de venta · cómo inducen la compra.</p></div>
+      </div>
+
+      <div class="box" style="border-left:2px solid var(--red)">
+        <div class="box-title" style="color:var(--red-l)">Técnicas proyectivas <span class="pill" style="background:rgba(240,107,107,.15);color:var(--red-l)">Individual</span></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Asociación de palabras</strong> → técnica de <strong>asociación</strong>. Rapidez + orden aleatorio.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Frases incompletas</strong> → técnica de <strong>complementación</strong>. Extensión de la anterior.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Test de imágenes</strong> → técnica de <strong>construcción</strong>. Foto ~20 seg → inventar historia.</p></div>
+      </div>
+
+      <div class="box" style="margin-top:8px;border-left:2px solid var(--amber)">
+        <div class="box-title" style="color:var(--amber-l)">Otras técnicas</div>
+        <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Etnografía:</strong> observar + entrevistar en hábitat natural.</p></div>
+        <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Netnografía:</strong> etnografía online. Límite: no se pueden generalizar los resultados.</p></div>
+        <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Design thinking:</strong> iterativo. Pensar/sentir/ver/decir/hacer como el cliente.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="alert" style="margin-top:10px"><strong>Trampa:</strong> pseudocompra es indirecta aunque el entrevistador actúe en persona. El vendedor no sabe → oculta → indirecta.</div>
+</div>
+
+<!-- ====================================================== -->
+<!-- TEMA 4 -->
+<!-- ====================================================== -->
+<div id="t4" class="topic-header">
+  <div class="topic-badge" style="background:var(--teal-bg);color:var(--teal-l)">Tema 4</div>
+  <div>
+    <h2>Investigación descriptiva: encuestas</h2>
+    <p>No continuas · Continuas · CATI/CAWI/CAPI · Tabla comparativa</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">No continuas (transversales)</div>
+  <div class="grid g2">
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Personal · CAPI</div>
+      <div class="pill" style="background:var(--teal-bg);color:var(--teal-l);margin-bottom:6px">Índice respuesta: ALTO ★</div>
+      <div class="row"><div class="dot" style="background:#6EE7B7"></div><p class="t-sm">Elevado índice de respuestas · Control sinceridad alto · Flexibilidad alta.</p></div>
+      <div class="row"><div class="dot" style="background:#6EE7B7"></div><p class="t-sm"><strong>Exclusivo:</strong> materiales auxiliares físicos · datos secundarios por observación · info sensible alta.</p></div>
+      <div class="row"><div class="dot" style="background:#FCA5A5"></div><p class="t-sm">Coste elevado · Sesgo entrevistador alto · Amplitud geográfica baja.</p></div>
+    </div>
+    <div class="box" style="border-top:2px solid var(--text3);opacity:.8">
+      <div class="box-title" style="color:var(--text3)">Postal · EN DESUSO</div>
+      <div class="pill" style="background:var(--red-bg);color:var(--red-l);margin-bottom:6px">Índice respuesta: 10-20% ★ dato exacto</div>
+      <div class="row"><div class="dot" style="background:#6EE7B7"></div><p class="t-sm">Económica · Sin sesgo entrevistador · Gran alcance geográfico.</p></div>
+      <div class="row"><div class="dot" style="background:#FCA5A5"></div><p class="t-sm">Índice muy bajo · Sin control de identidad · Tiempo largo · Sin material auxiliar.</p></div>
+    </div>
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Telefónica · CATI</div>
+      <div class="pill" style="background:var(--amber-bg);color:var(--amber-l);margin-bottom:6px">Índice respuesta: Moderado</div>
+      <div class="row"><div class="dot" style="background:#6EE7B7"></div><p class="t-sm">Rápida · Coste medio · Llega a colectivos dispersos. Más alto que postal.</p></div>
+      <div class="row"><div class="dot" style="background:#FCA5A5"></div><p class="t-sm">Cuestionario breve · Sin materiales · Desconfianza del encuestado.</p></div>
+    </div>
+    <div class="box" style="border-top:2px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Internet · CAWI</div>
+      <div class="pill" style="background:var(--amber-bg);color:var(--amber-l);margin-bottom:6px">Índice respuesta: Moderado</div>
+      <div class="row"><div class="dot" style="background:#6EE7B7"></div><p class="t-sm">Rápida · Económica · Sin sesgo entrevistador · Personalización del cuestionario.</p></div>
+      <div class="row"><div class="dot" style="background:#FCA5A5"></div><p class="t-sm">Representatividad limitada · Muestra sesgada a usuarios más conectados.</p></div>
+    </div>
+  </div>
+  <div style="overflow-x:auto;margin-top:12px"><table>
+    <tr><th style="text-align:left;width:24%">Criterio</th><th style="color:#B8B0F7">Personal</th><th style="color:var(--text3)">Postal ❌</th><th style="color:#8FF0D0">Telefónica</th><th style="color:#A5CBF5">Internet</th></tr>
+    <tr><td class="td-l">Índice de respuesta</td><td class="hi">ALTO ★</td><td class="lo">MUY BAJO (10-20%)</td><td class="mid">Moderado</td><td class="mid">Moderado</td></tr>
+    <tr><td class="td-l">Coste</td><td class="lo">Elevado</td><td class="hi">Bajo</td><td class="mid">Bajo-moderado</td><td class="hi">Bajo</td></tr>
+    <tr><td class="td-l">Sesgo entrevistador</td><td class="lo">Alto</td><td class="hi">Ninguno</td><td class="mid">Moderado</td><td class="hi">Ninguno</td></tr>
+    <tr><td class="td-l">Amplitud geográfica</td><td class="lo">Baja</td><td class="hi">Muy alta</td><td class="hi">Muy alta</td><td class="hi">Muy alta</td></tr>
+    <tr><td class="td-l">Cuestionario</td><td class="hi">Extenso</td><td class="mid">Moderado</td><td class="lo">Corto</td><td class="mid">Moderado</td></tr>
+    <tr><td class="td-l">Info sensible</td><td class="hi">Alto</td><td class="lo">Bajo</td><td class="lo">Bajo</td><td class="lo">Bajo</td></tr>
+    <tr><td class="td-l">Anonimato percibido</td><td class="lo">Bajo</td><td class="hi">Alto</td><td class="mid">Moderado</td><td class="mid">Moderado</td></tr>
+  </table></div>
+</div>
+
+<div class="card">
+  <div class="card-title">Continuas (longitudinales)</div>
+  <div class="grid g3">
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Tracking</div>
+      <p class="t-xs" style="margin-bottom:6px">"Termómetro que mide la temperatura de una marca"</p>
+      <p class="t-sm">Seguimiento longitudinal de un aspecto. Muestra puede cambiar entre olas.</p>
+      <p class="t-sm" style="margin-top:5px">✅ Info longitudinal · diseñar estrategias.<br>❌ Coste elevado.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Panel</div>
+      <p class="t-sm"><strong>Muestra fija, permanente, grande y representativa.</strong> Panelistas incentivados.</p>
+      <p class="t-sm" style="margin-top:5px">Tipos: oferta (Nielsen) · demanda (HomeScan) · audiencias (KantarMedia).</p>
+      <p class="t-sm" style="margin-top:5px">✅ Datos objetivos · precisión.<br>❌ Coste alto · solo info cuantitativa.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Ómnibus</div>
+      <p class="t-xs" style="margin-bottom:6px">"Autobús en el que van subiendo diferentes clientes (empresas)"</p>
+      <p class="t-sm">Cuestionario multitemático. Diferentes empresas comparten costes. 2-3 veces/año.</p>
+      <p class="t-sm" style="margin-top:5px"><strong>Mayor especificidad temática</strong> entre las continuas.</p>
+    </div>
+  </div>
+  <div class="warn"><strong>Diferencia panel vs tracking:</strong> panel = misma muestra siempre. Tracking = mismo fenómeno medido, la muestra puede cambiar.</div>
+</div>
+
+<!-- ====================================================== -->
+<!-- TEMA 5 -->
+<!-- ====================================================== -->
+
+<div id="t4b" class="topic-header">
+  <div class="topic-badge" style="background:var(--teal-bg);color:var(--teal-l)">Tema 4 · Extra</div>
+  <div>
+    <h2>Técnicas de observación cuantitativa</h2>
+    <p>Observación personal y mecánica · Análisis de rastros · Cookies · Análisis de contenido</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Condiciones de uso y ventajas/desventajas de la observación</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Condiciones para utilizar la observación</div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">La información necesaria debe ser <strong>evidente o inferible de la conducta observada</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">La conducta de interés debe ser <strong>repetitiva, frecuente o predecible</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">La conducta debe tener una <strong>duración relativamente corta</strong>.</p></div>
+      <p class="t-sm" style="margin-top:8px;font-weight:500">Aplicaciones:</p>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Diseño de itinerarios en establecimientos.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Eficacia del merchandising.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">Supervisión de vendedores.</p></div>
+    </div>
+    <div>
+      <div class="box" style="border-left:3px solid var(--purple);margin-bottom:8px">
+        <div class="box-title" style="color:var(--purple-l)">✅ Ventajas</div>
+        <p class="t-sm">Fiabilidad (mínima interacción) · Objetividad · Mecanismo sencillo · Rapidez · Coste reducido.</p>
+      </div>
+      <div class="box" style="border-left:3px solid var(--red)">
+        <div class="box-title" style="color:var(--red-l)">❌ Desventajas</div>
+        <p class="t-sm">No aplicable a motivaciones, actitudes o preferencias (no observables) · Sesgo del observador · Muestra reducida · Información estática · Influencia del entorno.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Métodos de observación — detalle con ejemplos</div>
+  <div class="grid g2">
+
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Observación personal</div>
+      <p class="t-sm">Un investigador observa y registra en <strong>memoria, impresos o plannings de observación</strong>.</p>
+      <p class="t-sm" style="margin-top:5px">✅ Más flexible. ❌ Sesgo alto.</p>
+      <p class="t-xs">Ej: observador en tienda anotando qué productos coge el cliente.</p>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Observación mecánica / electrónica</div>
+      <p class="t-sm">Dispositivos que registran sin intervención humana.</p>
+      <div class="row" style="margin-top:6px"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Contadores de tránsito:</strong> tráfico de un establecimiento.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Escáneres ópticos:</strong> stock, ventas diarias.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Audímetros:</strong> registran audiencias TV.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Cámaras oculares:</strong> movimientos de los ojos, cambio en diámetro de pupilas.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Psicogalvanómetros:</strong> resistencia eléctrica de la piel ante anuncios, envases, frases publicitarias.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Análisis del tono de voz:</strong> frecuencia de vibración de la voz humana.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Latencia de respuesta:</strong> tiempo de respuesta.</p></div>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Inventario</div>
+      <p class="t-sm">Examen de objetos físicos o análisis de existencias.</p>
+      <div class="row" style="margin-top:6px"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Pantry audit:</strong> marcas, cantidades y tamaños almacenados en el <strong>hogar del consumidor</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Store audit:</strong> productos disponibles para la venta y en el almacén del <strong>detallista/minorista</strong>.</p></div>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Análisis de contenido</div>
+      <p class="t-sm">Descripción objetiva, sistemática y cuantitativa del contenido manifiesto de un mensaje.</p>
+      <div class="row" style="margin-top:6px"><div class="dot" style="background:var(--blue)"></div><p class="t-sm">Análisis del <strong>mensaje publicitario</strong> (ej: cambios en la comunicación de una empresa).</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm">Análisis de <strong>preguntas abiertas</strong> de una encuesta para recodificar respuestas.</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm">Análisis de <strong>redes sociales</strong> (mensajes publicados por una empresa).</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm">Análisis de <strong>páginas web de un sector</strong> (información de precios, productos, traducción de idiomas).</p></div>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--red)">
+      <div class="box-title" style="color:var(--red-l)">Análisis de rastros</div>
+      <p class="t-sm">Recogida de evidencias físicas o virtuales de conductas pasadas.</p>
+      <div class="row" style="margin-top:6px"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Erosión del suelo de una tienda:</strong> zonas más transitadas.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Cookies:</strong> archivo de texto que registra páginas visitadas, minutos navegados en cada una, vínculos visitados, etc. Permite seguimiento del visitante de Internet.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Google Trends:</strong> tendencias de búsqueda en Internet, qué es lo que más se ha buscado.</p></div>
+    </div>
+
+  </div>
+</div>
+
+<div id="t5" class="topic-header">
+  <div class="topic-badge" style="background:var(--amber-bg);color:var(--amber-l)">Tema 5</div>
+  <div>
+    <h2>Investigación causal: experimentación</h2>
+    <p>Variables · Validez · Diseños · Factorial</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Condiciones de causalidad + Variables con ejemplos</div>
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="box">
+      <div class="box-title" style="color:var(--amber-l)">3 condiciones de causalidad</div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Secuencia temporal:</strong> la causa debe ocurrir ANTES que el efecto. Ej: el anuncio se emite (causa) → la marca es recordada después (efecto).</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Variación concomitante:</strong> cuando cambia X, cambia Y. Ej: más descuento → más ventas.</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Ausencia de causas alternativas:</strong> no hay otras variables que expliquen el efecto. Ej: si las ventas suben, debe ser por el descuento, no por que sea Navidad.</p></div>
+    </div>
+    <div class="box">
+      <div class="box-title" style="color:var(--amber-l)">Pregunta clave para identificar cada variable</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>¿Quién lo controla el investigador para ver qué pasa?</strong> → VI (tratamiento)</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>¿Qué mido como resultado?</strong> → VD (variable dependiente)</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>¿Qué puede fastidiar el experimento sin que yo quiera?</strong> → VE (variable extraña)</p></div>
+      <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>¿Sobre quién aplico el tratamiento?</strong> → Unidades experimentales</p></div>
+    </div>
+  </div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:28%">Experimento</th><th style="color:var(--purple-l)">Tratamiento (VI)</th><th style="color:var(--teal-l)">Variable dependiente (VD)</th><th style="color:var(--amber-l)">Variable extraña (VE)</th><th style="color:var(--blue-l)">Unidades de prueba</th></tr>
+    <tr><td class="td-l">Supermercado — promociones</td><td>2ª unidad mitad precio vs 2x1</td><td>Ventas / ticket medio</td><td>Día de la semana, hora</td><td>Clientes del supermercado</td></tr>
+    <tr><td class="td-l">Publicidad — tipo de anuncio</td><td>Anuncio emocional vs racional</td><td>Recuerdo de marca</td><td>Edad del espectador</td><td>Espectadores</td></tr>
+    <tr><td class="td-l">Música en tienda</td><td>Música lenta vs música rápida</td><td>Tiempo de estancia</td><td>Hora del día, afluencia</td><td>Compradores</td></tr>
+    <tr><td class="td-l">Precio de un producto</td><td>Precio bajo / medio / alto</td><td>Intención de compra</td><td>Conocimiento previo de marca</td><td>Consumidores</td></tr>
+    <tr><td class="td-l">Hotel — calidad servicio</td><td>Restaurante bueno vs malo</td><td>Satisfacción global</td><td>Temporada, precio pagado</td><td>Huéspedes</td></tr>
+  </table></div>
+</div>
+
+<div class="card">
+  <div class="card-title">Validez interna vs externa</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Validez interna → Laboratorio</div>
+      <p class="t-sm">Precisión y consistencia del experimento. Las VI son realmente las que producen el efecto.</p>
+      <p class="t-sm" style="margin-top:5px">Se logra con: aleatoriedad + control de variables externas.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Validez externa → Campo</div>
+      <p class="t-sm">Capacidad de generalizar los resultados a la población real.</p>
+      <p class="t-sm" style="margin-top:5px">Depende de: representatividad de la muestra + realidad contextual.</p>
+    </div>
+  </div>
+  <div class="alert"><strong>Trampa:</strong> laboratorio = validez INTERNA. Campo = validez EXTERNA. Son objetivos en tensión — ganar una suele costar la otra.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Los 4 diseños experimentales</div>
+  <div class="grid g2">
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">1 · Simple (2 grupos)</div>
+      <p class="t-sm">1 VI · 2 tratamientos · 1 VD · 1 momento.</p>
+      <div class="mono" style="display:block;margin:6px 0">X1 → O11<br>X2 → O12</div>
+      <p class="t-sm">Estadístico: <strong>t Student o ANOVA</strong>.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">2 · Múltiple (n grupos)</div>
+      <p class="t-sm">1 VI · n tratamientos (&gt;2) · 1 VD · 1 momento.</p>
+      <div class="mono" style="display:block;margin:6px 0">X1 → O11<br>X2 → O12<br>… Xn → O1n</div>
+      <p class="t-sm">Estadístico: <strong>ANOVA</strong> (nunca t Student con &gt;2 grupos).</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">3 · Pretest-Postest</div>
+      <p class="t-sm">Medición antes (O1i) y después (O2i) del tratamiento.</p>
+      <div class="mono" style="display:block;margin:6px 0">O11 → X1 → O21<br>O12 → X2 → O22</div>
+      <p class="t-sm">Los O1i deben ser <strong>similares</strong> entre grupos. Estadístico: ANOVA + ANCOVA.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">4 · Factorial ← único que mide interacciones</div>
+      <p class="t-sm">2+ VI × 2+ niveles → M×N celdas.</p>
+      <p class="t-sm" style="margin-top:5px">Efectos principales + <strong>efectos de interacción.</strong></p>
+      <p class="t-sm" style="margin-top:5px">Estadístico: ANOVA / MANOVA / MANCOVA.</p>
+    </div>
+  </div>
+  <div style="overflow-x:auto;margin-top:12px"><table>
+    <tr><th style="text-align:left">Criterio</th><th>Simple</th><th>Múltiple</th><th>Pretest-postest</th><th style="color:var(--blue-l)">Factorial ★</th></tr>
+    <tr><td class="td-l">Nº de VI</td><td>1</td><td>1</td><td>1 o más</td><td style="color:var(--blue-l);font-weight:500">2 o más</td></tr>
+    <tr><td class="td-l">Medición previa</td><td class="lo">No</td><td class="lo">No</td><td class="hi">Sí (pretest)</td><td>Opcional</td></tr>
+    <tr><td class="td-l">Mide interacciones</td><td class="lo">No</td><td class="lo">No</td><td class="lo">No</td><td class="hi">SÍ ← único</td></tr>
+    <tr><td class="td-l">Estadístico</td><td>t / ANOVA</td><td>ANOVA</td><td>ANOVA + ANCOVA</td><td>ANOVA/MANOVA/MANCOVA</td></tr>
+  </table></div>
+</div>
+
+<!-- ====================================================== -->
+<!-- TEMA 6 -->
+<!-- ====================================================== -->
+
+<div id="t5b" class="card">
+  <div class="card-title">Notación y detalle de cada diseño</div>
+  <div class="grid g2">
+
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Diseño 1 · Simple</div>
+      <p class="t-sm">1 VI · 2 tratamientos · 1 VD · 1 momento. Estadístico: <strong>t Student o ANOVA</strong>.</p>
+      <div class="mono" style="display:block;margin:6px 0;background:#EEEDFE">X1 → O11<br>X2 → O12</div>
+      <p class="t-sm">Comparando O11 vs O12. Uno puede ser grupo de control.</p>
+      <p class="t-xs">Ej: música lenta (X1) vs música rápida (X2) → tiempo de estancia en web (VD).</p>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Diseño 2 · Múltiple</div>
+      <p class="t-sm">1 VI · n tratamientos (&gt;2) · 1 VD · 1 momento. Estadístico: <strong>ANOVA obligatorio</strong>.</p>
+      <div class="mono" style="display:block;margin:6px 0;background:#E1F5EE">X1 → O11<br>X2 → O12<br>… Xn → O1n</div>
+      <p class="t-sm">Cuando necesitas mayor amplitud de variación en la VI.</p>
+      <p class="t-xs">Ej: precio bajo / medio / alto → disposición a comprar.</p>
+      <div class="warn">Con &gt;2 grupos la t Student NO se puede usar. Solo ANOVA.</div>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Diseño 3 · Pretest-Postest</div>
+      <p class="t-sm">Medición antes (O1i) y después (O2i). Estadístico: <strong>ANOVA + ANCOVA</strong>.</p>
+      <div class="mono" style="display:block;margin:6px 0;background:#FAEEDA">O11 → X1 → O21<br>O12 → X2 → O22<br>… O1n → Xn → O2n</div>
+      <p class="t-sm">O2j vs O1j = variación dentro del grupo. Diferencias entre O2j = qué tratamiento funciona mejor.</p>
+      <p class="t-sm"><strong>ANCOVA:</strong> ajusta por O1i para eliminar diferencias previas entre grupos.</p>
+      <div class="alert"><strong>Condición imprescindible:</strong> los O1i deben ser similares entre todos los grupos antes del tratamiento.</div>
+    </div>
+
+    <div class="box" style="border-top:2px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Diseño 4 · Factorial 2×2</div>
+      <p class="t-sm">2 VI × 2 niveles = 4 celdas. Estadístico: <strong>ANOVA / MANOVA / MANCOVA</strong>.</p>
+      <table style="margin:8px 0;width:100%">
+        <tr><th style="width:35%"></th><th colspan="2" style="color:var(--blue-l)">VI 2 · Limpieza</th></tr>
+        <tr><th style="color:var(--blue-l)">VI 1 · Restaurante</th><th>Media</th><th>Alta</th></tr>
+        <tr><td style="border:1px solid var(--border);padding:5px;font-weight:500;text-align:left">Media</td><td style="border:1px solid var(--border);padding:5px;background:var(--purple-bg);color:var(--purple-l);font-weight:700;text-align:center">A</td><td style="border:1px solid var(--border);padding:5px;background:var(--teal-bg);color:var(--teal-l);font-weight:700;text-align:center">B</td></tr>
+        <tr><td style="border:1px solid var(--border);padding:5px;font-weight:500;text-align:left">Alta</td><td style="border:1px solid var(--border);padding:5px;background:var(--amber-bg);color:var(--amber-l);font-weight:700;text-align:center">C</td><td style="border:1px solid var(--border);padding:5px;background:var(--blue-bg);color:var(--blue-l);font-weight:700;text-align:center">D</td></tr>
+      </table>
+      <p class="t-sm"><strong>Efectos principales:</strong> impacto de cada VI por separado.<br><strong>Efectos de interacción:</strong> el efecto de A depende del nivel de B.</p>
+      <div class="tip"><strong>Interacción:</strong> "¿El efecto de A cambia según el nivel de B?" Si sí → hay interacción → necesitas factorial.</div>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:10px">
+    <div class="box">
+      <div class="box-title" style="color:var(--text2)">Notación — a dominar</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><span class="mono">Xh</span> = tratamiento h de la VI.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><span class="mono">Oih</span> = observación i-ésima del grupo h. O11 = primera medición grupo 1. O21 = postest grupo 1.</p></div>
+    </div>
+    <div class="box">
+      <div class="box-title" style="color:var(--text2)">Afirmaciones falsas sobre el factorial (examen)</div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">"Son cuasi-experimentales" → FALSO. Pueden ser de laboratorio.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">"Incluyen 2 VD y 1 VI" → FALSO. Es al revés: 2+ VI y 1+ VD.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">"Siempre tienen nº par de grupos" → FALSO. 3×3 = 9 grupos (impar).</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">"No usan variables de control" → FALSO. Las controlan estadísticamente.</p></div>
+    </div>
+  </div>
+</div>
+
+<div id="t6" class="topic-header">
+  <div class="topic-badge" style="background:var(--blue-bg);color:var(--blue-l)">Tema 6</div>
+  <div>
+    <h2>Muestreo</h2>
+    <p>Probabilístico vs No probabilístico · Métodos · Concluyente vs Exploratorio</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Regla de oro</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Probabilístico (P) → Concluyente</div>
+      <p class="t-sm" style="margin-bottom:6px">Todos tienen probabilidad <strong>conocida y ≠ 0</strong> de ser elegidos.</p>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Aleatorio simple:</strong> sorteo puro. Todos igual probabilidad.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Aleatorio sistemático:</strong> lista + intervalo fijo (k=N/n).</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Estratificado:</strong> dividir en grupos y sortear dentro de cada uno.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Conglomerados:</strong> seleccionar grupos al azar y encuestar a todos dentro.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Rutas aleatorias:</strong> reglas fijas predeterminadas de selección de hogares.</p></div>
+      <p class="t-sm" style="margin-top:8px">✅ Se puede calcular el error muestral · generalizar resultados.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--red)">
+      <div class="box-title" style="color:var(--red-l)">No probabilístico (NP) → Exploratorio</div>
+      <p class="t-sm" style="margin-bottom:6px">El investigador decide quién entra. Sin azar.</p>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Conveniencia:</strong> los más fáciles de encontrar.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Por juicios:</strong> el investigador elige a quien cree que es el perfil.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Por cuotas:</strong> como estratificado pero el encuestador elige sin sorteo.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Bola de nieve:</strong> un participante recomienda al siguiente.</p></div>
+      <p class="t-sm" style="margin-top:8px">❌ No se puede calcular error muestral · no se generaliza.</p>
+    </div>
+  </div>
+  <div class="alert"><strong>Trampa más típica:</strong> rutas aleatorias suena a NP pero es P (sigue reglas fijas predeterminadas). Estratificado (P) vs cuotas (NP): misma estructura, diferente método de selección dentro — el estratificado sortea, las cuotas no.</div>
+</div>
+
+<!-- ====================================================== -->
+<!-- TEMA 7 -->
+<!-- ====================================================== -->
+
+
+<div id="t6b" class="card">
+  <div class="card-title">Condiciones que favorecen el uso de muestra o censo</div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:44%">Condición</th><th style="color:var(--purple-l)">Muestra</th><th style="color:var(--teal-l)">Censo</th></tr>
+    <tr><td class="td-l">Presupuesto</td><td class="lo">Pequeño</td><td class="hi">Grande</td></tr>
+    <tr><td class="td-l">Tiempo disponible</td><td class="lo">Poco</td><td class="hi">Mucho</td></tr>
+    <tr><td class="td-l">Tamaño de la población</td><td class="hi">Grande</td><td class="lo">Pequeña</td></tr>
+    <tr><td class="td-l">Varianza en la característica</td><td class="lo">Pequeña</td><td class="hi">Grande</td></tr>
+    <tr><td class="td-l">Coste de los errores de muestreo (omitir unidad relevante)</td><td class="hi">Bajo</td><td class="lo">Alto</td></tr>
+    <tr><td class="td-l">Coste de los errores ajenos al muestreo</td><td class="lo">Alto</td><td class="hi">Bajo</td></tr>
+    <tr><td class="td-l">Naturaleza de la medición (ej: test destructivo de producto)</td><td style="color:var(--purple-l);font-weight:500">Destructiva → Muestra</td><td style="color:var(--teal-l);font-weight:500">No destructiva → Censo</td></tr>
+    <tr><td class="td-l">Atención a casos individuales</td><td class="hi">Sí</td><td class="lo">No</td></tr>
+  </table></div>
+  <div class="grid g2" style="margin-top:10px">
+    <div class="box">
+      <div class="box-title" style="color:var(--text2)">Conceptos fundamentales</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Población:</strong> elementos que comparten características y forman el universo.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Censo:</strong> enumeración completa de todos los elementos de la población.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Muestra:</strong> subgrupo representativo de la población.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Marco muestral:</strong> lista de donde se extraen las unidades muestrales.</p></div>
+    </div>
+    <div class="box">
+      <div class="box-title" style="color:var(--text2)">Ejemplos prácticos</div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Muestra:</strong> encuestar a 500 clientes de un supermercado con 50.000 → presupuesto pequeño, población grande.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Censo:</strong> encuestar a todos los empleados de una empresa de 20 personas → población pequeña, cada caso individual importa.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Test destructivo → siempre muestra:</strong> test de resistencia de un coche (no puedes destruir todos).</p></div>
+    </div>
+  </div>
+  <div class="warn"><strong>Ejemplo BMW de los apuntes:</strong> si el coste de omitir una unidad muestral relevante es alto (como no incluir a un comprador BMW en un estudio de lujo), se prefiere el censo o una muestra muy cuidadosa.</div>
+</div>
+
+<div id="t6c" class="card">
+  <div class="card-title">Probabilístico → Concluyente · No probabilístico → Exploratorio</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Probabilístico → Estudio concluyente</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">✅ Se puede calcular el <strong>error muestral</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">✅ Se conoce la <strong>probabilidad de selección</strong> de cada elemento.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">✅ Resultados <strong>generalizables</strong> a la población.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">✅ Adecuado para <strong>tomar decisiones concretas</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">❌ Más caro y lento.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--red)">
+      <div class="box-title" style="color:var(--red-l)">No probabilístico → Estudio exploratorio</div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">❌ NO se puede calcular el error muestral.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">❌ NO se conoce la probabilidad de selección.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">❌ Resultados <strong>no generalizables</strong>.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">✅ Útil para conocer el problema, generar hipótesis.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm">✅ Más rápido y barato.</p></div>
+    </div>
+  </div>
+  <div style="background:var(--bg3);border-radius:var(--r-sm);padding:12px 14px;margin-top:10px">
+    <p class="t-sm" style="font-weight:500;margin-bottom:10px">Cadena lógica — memoriza la cadena, no la definición</p>
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+      <span style="background:var(--purple-bg);color:var(--purple-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Azar en selección</span>
+      <span style="color:var(--text3);font-size:14px">→</span>
+      <span style="background:var(--purple-bg);color:var(--purple-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Probabilidad conocida</span>
+      <span style="color:var(--text3);font-size:14px">→</span>
+      <span style="background:var(--purple-bg);color:var(--purple-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Calcular error muestral</span>
+      <span style="color:var(--text3);font-size:14px">→</span>
+      <span style="background:var(--teal-bg);color:var(--teal-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Generalizar = CONCLUYENTE</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+      <span style="background:var(--red-bg);color:var(--red-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">El investigador elige</span>
+      <span style="color:var(--text3);font-size:14px">→</span>
+      <span style="background:var(--red-bg);color:var(--red-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Probabilidad desconocida</span>
+      <span style="color:var(--text3);font-size:14px">→</span>
+      <span style="background:var(--red-bg);color:var(--red-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">Sin error muestral</span>
+      <span style="color:var(--text3);font-size:14px">→</span>
+      <span style="background:var(--amber-bg);color:var(--amber-l);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600">No generalizar = EXPLORATORIO</span>
+    </div>
+  </div>
+</div>
+
+<div id="t7" class="topic-header">
+  <div class="topic-badge" style="background:var(--coral-bg);color:#F4B89A">Tema 7</div>
+  <div>
+    <h2>Escalas y cuestionario</h2>
+    <p>Escalas básicas · Comparativas vs no comparativas · Tipos de preguntas</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Modelo de valor verdadero</div>
+  <div class="mono" style="margin-bottom:10px;font-size:13px">Valor medido = Valor verdadero + EA + ES</div>
+  <div class="grid g2">
+    <div class="box"><p class="t-sm"><strong>EA (error aleatorio):</strong> circunstancias transitorias. Se elimina con fiabilidad.</p></div>
+    <div class="box"><p class="t-sm"><strong>ES (error sistemático):</strong> sesgo constante. Se elimina con validez.</p></div>
+  </div>
+  <div class="warn"><strong>Fiabilidad</strong> = eliminar EA. <strong>Validez</strong> = eliminar EA y ES. Fiabilidad es necesaria pero NO suficiente para validez.</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Las 4 escalas básicas con ejemplos</div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:12%">Escala</th><th>Propiedades</th><th>Cero</th><th>Variable</th><th>Estadístico</th><th>Ejemplo general</th><th>Ejemplo marketing</th></tr>
+    <tr>
+      <td class="td-l" style="color:var(--purple-l)">Nominal</td>
+      <td>Solo identidad · Clasificar sin orden</td>
+      <td>No hay</td>
+      <td>Categórica</td>
+      <td>Moda · frecuencias · Chi²</td>
+      <td>Sexo · DNI · código postal · medio de transporte</td>
+      <td>Marca comprada · tipo de establecimiento · canal de compra</td>
+    </tr>
+    <tr>
+      <td class="td-l" style="color:var(--teal-l)">Ordinal</td>
+      <td>Identidad + orden. Sin proporcionalidad entre números</td>
+      <td>No hay</td>
+      <td>Ordinal</td>
+      <td>Moda · mediana · percentiles · Spearman</td>
+      <td>Clasificación equipos torneo · ranking países</td>
+      <td>Ordenar atributos zapatillas (comodidad 1, precio 2, color 3) · posición de marcas en el mercado</td>
+    </tr>
+    <tr>
+      <td class="td-l" style="color:var(--amber-l)">Intervalo</td>
+      <td>Identidad + orden + distancia. Cero arbitrario</td>
+      <td style="color:var(--red-l);font-weight:500">Arbitrario</td>
+      <td>Continua</td>
+      <td>Media · desv. típica · correlación Pearson · ANOVA · regresión</td>
+      <td>Temperatura (0°C no es ausencia de temperatura)</td>
+      <td>Escala Likert de satisfacción (1-5)* · actitud hacia una marca · escala diferencial semántico</td>
+    </tr>
+    <tr>
+      <td class="td-l" style="color:var(--blue-l)">Razón</td>
+      <td>Todo lo anterior + origen fijo. Cero absoluto</td>
+      <td style="color:var(--teal-l);font-weight:500">Fijo (absoluto)</td>
+      <td>Continua</td>
+      <td>Media geométrica · armónica · coef. de variación</td>
+      <td>Peso · edad · longitud (0 kg = ausencia de peso)</td>
+      <td>Ventas de un establecimiento · nº unidades en stock · importe gastado en última compra · minutos desplazamiento al establecimiento</td>
+    </tr>
+  </table></div>
+  <p class="t-xs" style="margin-top:6px">*Likert se trata convencionalmente como intervalo aunque los apuntes advierten: "no existe consenso en este sentido". La diferencia clave intervalo vs razón: el cero de intervalo es arbitrario (0°C no significa ausencia de temperatura), el cero de razón es absoluto (0 ventas = ausencia total de ventas).</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:10px">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Nominal — ejemplo visual</div>
+      <p class="t-sm">¿Qué medio de transporte usó en su último viaje?<br>□ Coche (1) &nbsp; □ Autobús (2) &nbsp; □ Tren (3)<br>□ Avión (4) &nbsp; □ Moto (5)</p>
+      <p class="t-xs">Los números son solo etiquetas, no indican orden ni magnitud.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Ordinal — ejemplo visual</div>
+      <p class="t-sm">Ordene las marcas de zapatillas según su preferencia:<br>Shimano (1) · Spiuk (2) · Exustar (3) · Northwave (4)</p>
+      <p class="t-xs">Shimano es mejor que Spiuk, pero no sabemos cuánto mejor.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Intervalo — ejemplo visual (Likert)</div>
+      <p class="t-sm">Grado de satisfacción global con el destino:<br>1 Muy insatisfecho · 2 Bastante insatisfecho<br>3 Ni/Ni · 4 Bastante satisfecho · 5 Muy satisfecho</p>
+      <p class="t-xs">La distancia entre puntos es igual, pero el cero no existe o es arbitrario.</p>
+    </div>
+    <div class="box" style="border-left:3px solid var(--blue)">
+      <div class="box-title" style="color:var(--blue-l)">Razón — ejemplo visual</div>
+      <p class="t-sm">Ventas anuales de una tienda: 250.000€<br>Si otra tienda vende 125.000€ → la primera vende exactamente el <strong>doble</strong>.</p>
+      <p class="t-xs">Los ratios tienen significado porque el cero es absoluto (0€ = sin ventas).</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Escalas comparativas vs no comparativas</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Comparativas (no métricas → ordinal)</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Comparación por pares:</strong> elige entre dos objetos.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Orden de clasificación (rangos):</strong> ordenar objetos. Máx 5-6.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Suma constante:</strong> repartir 100 puntos. Máx 5 atributos.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Clasificación Q:</strong> tarjetas en pilas. Entre 60-90 objetos (nunca &lt;60 ni &gt;140).</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">No comparativas (métricas → intervalo)</div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Clasificación continua:</strong> marca en una línea. Poca info. Crece en online.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Likert:</strong> 1-5 o 1-7 · acuerdo/desacuerdo · escala totalizada · ítems negativos se revierten.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Diferencial semántico:</strong> 1-7 o -3/+3 · adjetivos bipolares O monopolares · análisis de perfil de imagen. Negativos no siempre a la izquierda.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Stapel:</strong> -5 a +5 · sin neutro · un solo adjetivo (no par bipolar).</p></div>
+    </div>
+  </div>
+  <div class="alert"><strong>Diferencial vs Stapel:</strong> diferencial = dos polos opuestos por ítem. Stapel = un solo adjetivo de -5 a +5.</div>
+</div>
+
+
+<div id="t7b" class="card">
+  <div class="card-title">Fiabilidad y validez de las escalas</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Fiabilidad — eliminar EA</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">La escala mide de forma <strong>consistente y estable</strong>. Libre de error aleatorio.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Medida con el <strong>alfa de Cronbach &gt; 0,7</strong> = aceptable.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm">Condición <strong>necesaria pero no suficiente</strong> para la validez.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Validez — eliminar EA y ES</div>
+      <p class="t-sm" style="margin-bottom:6px">Mide lo que el investigador quiere medir. Requiere EA=0 y ES=0.</p>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Validez de contenido:</strong> ¿cubre bien el dominio del constructo?</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Validez de constructo:</strong> ¿refleja la naturaleza del concepto?</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Validez de criterio/nomológica:</strong> ¿se comporta como predice la teoría con otras variables?</p></div>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:10px">
+    <div class="box">
+      <div class="box-title" style="color:var(--text2)">Decisiones en escalas multi-ítem</div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Nº de categorías:</strong> entre 5 y 7 es lo óptimo.</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Balanceada o no:</strong> mismo nº de opciones + y − o asimetría deliberada.</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Par o impar:</strong> impar = posición neutral. Par = obliga a posicionarse.</p></div>
+      <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Forzada o no:</strong> forzada = sin opción NS/NC.</p></div>
+    </div>
+    <div class="box" style="grid-column: span 2">
+      <div class="box-title" style="color:var(--text2)">Trampas de examen sobre fiabilidad y validez</div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>¿La fiabilidad garantiza la validez?</strong> NO. Una escala puede medir siempre igual (fiable) pero medir lo que no toca (no válida).</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>¿La Likert es de intervalo o razón?</strong> Convencionalmente de <strong>intervalo</strong>, pero los apuntes advierten: "no existe consenso en este sentido".</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>¿Diferencial semántico es comparativo?</strong> NO — es no comparativo. Tiene etiquetas monopolares O bipolares (ambas son correctas).</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Tipos de preguntas del cuestionario</div>
+  <div class="grid g2">
+    <div>
+      <p class="t-sm" style="font-weight:500;color:var(--purple-l);margin-bottom:6px">Criterio 1 · Libertad de respuesta</p>
+      <div class="box" style="margin-bottom:6px">
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Abierta:</strong> el encuestado responde con sus palabras. Sin opciones.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Cerrada:</strong> opciones predefinidas, sin posibilidad de salirse.</p></div>
+        <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Semicerrada:</strong> opciones predefinidas + "Otra, especificar".</p></div>
+      </div>
+      <p class="t-sm" style="font-weight:500;color:var(--teal-l);margin-bottom:6px">Criterio 2 · Cantidad de respuestas</p>
+      <div class="box">
+        <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Dicotómica:</strong> exactamente 2 opciones (Sí/No).</p></div>
+        <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Multicotómica:</strong> más de 2 opciones pero se elige solo 1.</p></div>
+        <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Múltiple respuesta:</strong> se pueden marcar varias a la vez.</p></div>
+      </div>
+    </div>
+    <div>
+      <p class="t-sm" style="font-weight:500;color:var(--amber-l);margin-bottom:6px">Criterio 3 · Fin de las preguntas</p>
+      <div class="box" style="margin-bottom:6px">
+        <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Filtro:</strong> redirige a diferentes preguntas según la respuesta. Ej: "si tiene coche → pase a P5".</p></div>
+        <div class="row"><div class="dot" style="background:var(--amber)"></div><p class="t-sm"><strong>Control:</strong> verifica coherencia y sinceridad. Ej: incluir "Spotify" como buscador falso para detectar respuestas sin pensar.</p></div>
+      </div>
+      <p class="t-sm" style="font-weight:500;color:var(--blue-l);margin-bottom:6px">Criterio 4 · Forma de realización</p>
+      <div class="box">
+        <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>Directa:</strong> se pregunta explícitamente lo que se quiere saber.</p></div>
+        <div class="row"><div class="dot" style="background:var(--blue)"></div><p class="t-sm"><strong>Indirecta:</strong> encubierta. El encuestado no sabe exactamente qué se investiga.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="warn" style="margin-top:10px"><strong>Multicotómica ≠ Múltiple respuesta:</strong> multicotómica tiene varias opciones pero eliges solo UNA. Múltiple respuesta puedes marcar VARIAS. Los datos sociodemográficos van siempre al FINAL del cuestionario.</div>
+</div>
+
+<!-- ====================================================== -->
+<!-- TEMA 8 -->
+<!-- ====================================================== -->
+
+<div id="t7c" class="card">
+  <div class="card-title">10 etapas en la elaboración del cuestionario</div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">1</div><div><p class="t-sm"><strong>Decidir qué tipo de información es necesaria.</strong></p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">2</div><div><p class="t-sm"><strong>Decidir el tipo de cuestionario</strong> (autoadministrado o asistido) y método de entrevista.</p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--purple-bg);color:var(--purple-l)">3</div><div><p class="t-sm"><strong>Determinar el contenido de las preguntas.</strong></p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--amber-bg);color:var(--amber-l)">4</div><div><p class="t-sm"><strong>Diseñar las preguntas para que no generen dudas.</strong></p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--amber-bg);color:var(--amber-l)">5</div><div><p class="t-sm"><strong>Estructurar el cuestionario:</strong> partes y orden de las preguntas (intro → aproximación → complejas → sociodemográficos al final).</p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--amber-bg);color:var(--amber-l)">6</div><div><p class="t-sm"><strong>Determinar la redacción de las preguntas</strong> — aplicar las normas básicas.</p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">7</div><div><p class="t-sm"><strong>Identificar la forma y distribución.</strong></p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">8</div><div><p class="t-sm"><strong>Reproducir el cuestionario.</strong></p></div></div>
+    <div class="step" style="border:1px solid rgba(16,110,86,.3);background:var(--teal-bg)"><div class="step-num" style="background:rgba(16,110,86,.2);color:var(--teal-l)">9</div><div><p class="t-sm"><strong style="color:var(--teal-l)">Probar el cuestionario: PRUEBA PILOTO o PRETEST ← cae en examen</strong><br>Última etapa antes de lanzarlo al campo.</p></div></div>
+    <div class="step"><div class="step-num" style="background:var(--teal-bg);color:var(--teal-l)">10</div><div><p class="t-sm"><strong>Difundir el cuestionario:</strong> cumplimentación.</p></div></div>
+  </div>
+  <div class="card" style="margin-top:12px;padding:12px 16px">
+    <div class="card-title" style="font-size:12px">Normas de redacción — lista roja (etapa 6)</div>
+    <div class="grid g2">
+      <div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">No usar palabras <strong>ambiguas</strong> (habitualmente, usualmente).</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">No incluir <strong>la respuesta en la pregunta</strong>.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">Evitar <strong>preguntas de doble respuesta</strong>.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">Evitar <strong>cálculos</strong>.</p></div>
+      </div>
+      <div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">No hacer preguntas <strong>embarazosas</strong>.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">Formular preguntas <strong>neutrales</strong>.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm">Preguntas <strong>concretas y breves</strong>.</p></div>
+        <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Vocabulario sencillo</strong> y comprensible.</p></div>
+      </div>
+    </div>
+    <div class="alert"><strong>Ejemplo de pregunta mal formulada (literal de los apuntes):</strong> "¿Qué le parece a usted la rapidez y amabilidad con que le atienden?" → doble respuesta: mezcla dos atributos en una sola pregunta.</div>
+  </div>
+</div>
+
+<div id="t8" class="topic-header">
+  <div class="topic-badge" style="background:var(--teal-bg);color:var(--teal-l)">Tema 8</div>
+  <div>
+    <h2>Técnicas de análisis de datos</h2>
+    <p>Univariante · Bivariante · Multivariante · H₀ de cada técnica</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Los 3 niveles de análisis</div>
+  <div class="grid g3">
+    <div class="box" style="border-top:2px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Univariante — 1 variable</div>
+      <p class="t-sm">Nominal → moda.<br>Ordinal → moda, mediana.<br>Métrica → media, varianza, desv. típica.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Bivariante — 2 variables</div>
+      <p class="t-sm">Paramétricos: T-test, ANOVA, Pearson.<br>No paramétricos: Chi², Spearman.</p>
+    </div>
+    <div class="box" style="border-top:2px solid var(--amber)">
+      <div class="box-title" style="color:var(--amber-l)">Multivariante — 3+ variables</div>
+      <p class="t-sm">Dependencia: regresión, ANOVA, discriminante, logística.<br>Interdependencia: factorial, clúster, correspondencias.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">H₀ exactas por técnica + supuestos paramétricos</div>
+  <div class="grid g2">
+    <div class="box">
+      <div class="box-title" style="color:var(--teal-l)">H₀ según técnica</div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Chi²:</strong> no existe asociación entre v1 y v2.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>T-test / ANOVA:</strong> las medias son iguales (µ1=µ2).</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Levene:</strong> existe homogeneidad de varianzas.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Pearson:</strong> el coeficiente de correlación = 0.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Regresión:</strong> ningún parámetro es significativamente distinto de cero.</p></div>
+      <div class="row"><div class="dot" style="background:var(--teal)"></div><p class="t-sm"><strong>Clúster K-medias:</strong> no existen grupos diferentes en función de las variables.</p></div>
+    </div>
+    <div class="box">
+      <div class="box-title" style="color:var(--red-l)">Supuestos paramétricos (verificar antes de T/ANOVA)</div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Normalidad:</strong> test Kolmogorov-Smirnov.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Aleatoriedad:</strong> recogida de datos.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Homoscedasticidad:</strong> test de Levene.</p></div>
+      <div class="row"><div class="dot" style="background:var(--red)"></div><p class="t-sm"><strong>Linealidad.</strong></p></div>
+      <div class="tip">Si los supuestos no se cumplen → usar el no paramétrico equivalente. Ej: en vez de Pearson → Spearman.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Técnicas bivariantes — cuándo usar cada una</div>
+  <div style="overflow-x:auto"><table>
+    <tr><th style="text-align:left;width:26%">Técnica</th><th>VD</th><th>VI</th><th>H₀</th><th>Cuándo</th></tr>
+    <tr><td class="td-l" style="color:var(--purple-l)">T-test independientes</td><td>Métrica</td><td>Categórica (2 grupos)</td><td class="mono" style="background:transparent;padding:0">µ1=µ2</td><td>Comparar medias entre 2 grupos</td></tr>
+    <tr><td class="td-l" style="color:var(--purple-l)">T-test relacionadas</td><td>Métrica</td><td>Mismo grupo 2 momentos</td><td class="mono" style="background:transparent;padding:0">µ1=µ2</td><td>Pretest-postest mismo grupo</td></tr>
+    <tr><td class="td-l" style="color:var(--teal-l)">ANOVA 1 factor</td><td>Métrica</td><td>Categórica (3+ grupos)</td><td class="mono" style="background:transparent;padding:0">µ1=…=µn</td><td>Comparar medias 3+ grupos</td></tr>
+    <tr><td class="td-l" style="color:var(--amber-l)">Pearson</td><td>Métrica</td><td>Métrica</td><td class="mono" style="background:transparent;padding:0">r=0</td><td>Relación lineal entre 2 métricas</td></tr>
+    <tr><td class="td-l" style="color:var(--red-l)">Chi-cuadrado</td><td>Categórica</td><td>Categórica</td><td>No asociación</td><td>Tablas contingencia</td></tr>
+    <tr><td class="td-l" style="color:var(--red-l)">Spearman</td><td>Ordinal/métrica*</td><td>Ordinal/métrica*</td><td class="mono" style="background:transparent;padding:0">r=0</td><td>Como Pearson sin normalidad</td></tr>
+  </table></div>
+</div>
+
+<div class="card">
+  <div class="card-title">Técnicas multivariantes</div>
+  <div class="grid g2">
+    <div class="box" style="border-left:3px solid var(--purple)">
+      <div class="box-title" style="color:var(--purple-l)">Interdependencia (sin VD)</div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Análisis factorial:</strong> reducir variables en factores latentes.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Análisis de correspondencias:</strong> relaciones entre variables categóricas.</p></div>
+      <div class="row"><div class="dot" style="background:var(--purple)"></div><p class="t-sm"><strong>Clúster K-medias:</strong> segmentar individuos. ANOVA confirma grupos. Chi² caracteriza.</p></div>
+    </div>
+    <div class="box" style="border-left:3px solid var(--teal)">
+      <div class="box-title" style="color:var(--teal-l)">Dependencia (con VD)</div>
+      <div style="overflow-x:auto"><table style="margin-top:4px">
+        <tr><th style="text-align:left">Técnica</th><th>VD</th><th>VI</th></tr>
+        <tr><td class="td-l">Regresión</td><td>Métrica</td><td>Métricas + ficticias</td></tr>
+        <tr><td class="td-l">ANOVA multifactor</td><td>Métrica</td><td>Categóricas</td></tr>
+        <tr><td class="td-l">CHAID</td><td>Categórica</td><td>Categóricas</td></tr>
+        <tr><td class="td-l">Discriminante</td><td>Categórica</td><td>Métricas</td></tr>
+        <tr><td class="td-l">Reg. logística</td><td>Categórica</td><td>Métricas + categóricas</td></tr>
+      </table></div>
+    </div>
+  </div>
+  <div class="warn"><strong>Clave:</strong> D métrica → regresión o ANOVA. D categórica → discriminante, logística o CHAID. Sin D → interdependencia.</div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>Investigación de Mercados · UCLM · Basado en apuntes académicos de la asignatura</p>
+</footer>
+
+</body>
+</html>

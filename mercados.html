@@ -351,6 +351,10 @@ function renderHome(){
       <span class="ico">❤️‍🩹</span>
       <div><div>Repasar Errores</div><div class="sub">${mistakes.length>0?mistakes.length+' pregunta'+(mistakes.length>1?'s':'')+ ' fallada'+(mistakes.length>1?'s':''):'¡Sin errores pendientes!'}</div></div>
     </button>
+    <button class="bs" onclick="window.location.href='guia_mercados.html'">
+      <span class="ico">📖</span>
+      <div><div>Lo más importante de cada tema</div><div class="sub">Guía de contenidos clave</div></div>
+    </button>
     <button class="bg" onclick="resetProgress()" style="${a>0?'':'display:none'}">Reiniciar progreso</button>`;
   const ac=document.getElementById('acc-card');
   if(a>0){
